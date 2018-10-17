@@ -97,16 +97,6 @@ class LocationService:Service() {
 
 
     private fun onLocationChanged(lastLocation: Location?) {
-//        Log.e("LocationService","ID ::$serviceId >>${lastLocation?.latitude}, ${lastLocation?.longitude}")
-//        LocalBroadcastManager.getInstance(this)
-//                .also {
-//                    Intent(LOCATION_RECEIVER).apply {
-//                        putExtra("lat",lastLocation?.latitude)
-//                        putExtra("lng",lastLocation?.longitude)
-//                    }.also {intent ->
-//                        it.sendBroadcast(intent)
-//                    }
-//                }
         Intent().apply {
             action = LOCATION_RECEIVER
             putExtra("lat",lastLocation?.latitude)

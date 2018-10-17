@@ -24,17 +24,6 @@ class MainActivity : AppCompatActivity() {
     var isLocationPermissionGranted:Boolean = false
     lateinit var mLocationRequest: LocationRequest
 
-
-//    var locationBroadcastReceiver: BroadcastReceiver = object :BroadcastReceiver(){
-//        override fun onReceive(p0: Context?, intent: Intent?) {
-//            var lat = intent?.getDoubleExtra("lat",0.0)
-//            var lng = intent?.getDoubleExtra("lng",0.0)
-//            onLocationUpdate(lat,lng)
-//        }
-//    }
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,8 +37,6 @@ class MainActivity : AppCompatActivity() {
             startService(intent)
         }
 
-//        LocalBroadcastManager.getInstance(this)
-//                .registerReceiver(locationBroadcastReceiver, IntentFilter(LocationService.LOCATION_RECEIVER))
     }
 
     override fun onResume() {
@@ -61,9 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-//        LocalBroadcastManager
-//                .getInstance(this)
-//                .unregisterReceiver(locationBroadcastReceiver)
+
     }
 
 
