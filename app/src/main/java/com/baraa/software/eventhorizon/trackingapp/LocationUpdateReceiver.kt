@@ -3,6 +3,7 @@ package com.baraa.software.eventhorizon.trackingapp
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 
 class LocationUpdateReceiver:BroadcastReceiver() {
@@ -11,5 +12,6 @@ class LocationUpdateReceiver:BroadcastReceiver() {
         var lng = intent?.getDoubleExtra("lng",0.0)
 
         Toast.makeText(context,"your Current location $lat , $lng", Toast.LENGTH_LONG).show()
+        Log.d("LocationUpdateReceiver","your Current location $lat , $lng")
     }
 }

@@ -14,8 +14,6 @@ import android.os.IBinder
 import android.os.Looper
 import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
-import android.support.v4.content.LocalBroadcastManager
-import android.util.Log
 import com.google.android.gms.location.*
 
 class LocationService:Service() {
@@ -99,16 +97,22 @@ class LocationService:Service() {
 
 
     private fun onLocationChanged(lastLocation: Location?) {
-        Log.e("LocationService","ID ::$serviceId >>${lastLocation?.latitude}, ${lastLocation?.longitude}")
-        LocalBroadcastManager.getInstance(this)
-                .also {
-                    Intent(LOCATION_RECEIVER).apply {
-                        putExtra("lat",lastLocation?.latitude)
-                        putExtra("lng",lastLocation?.longitude)
-                    }.also {intent ->
-                        it.sendBroadcast(intent)
-                    }
-                }
+//        Log.e("LocationService","ID ::$serviceId >>${lastLocation?.latitude}, ${lastLocation?.longitude}")
+//        LocalBroadcastManager.getInstance(this)
+//                .also {
+//                    Intent(LOCATION_RECEIVER).apply {
+//                        putExtra("lat",lastLocation?.latitude)
+//                        putExtra("lng",lastLocation?.longitude)
+//                    }.also {intent ->
+//                        it.sendBroadcast(intent)
+//                    }
+//                }
+        Intent().apply {
+            action = LOCATION_RECEIVER
+            putExtra("lat",lastLocation?.latitude)
+            putExtra("lng",lastLocation?.longitude)
+            sendBroadcast(this)
+        }
         val textContent = "Your current location is ${lastLocation?.latitude}, ${lastLocation?.longitude}"
         updateNotification(serviceId ?:0,textContent)
     }
