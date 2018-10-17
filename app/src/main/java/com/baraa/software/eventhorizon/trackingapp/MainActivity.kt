@@ -1,12 +1,12 @@
 package com.baraa.software.eventhorizon.trackingapp
 
 import android.Manifest
-import android.content.*
+import android.content.Intent
+import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.google.android.gms.common.api.ResolvableApiException
@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var mLocationRequest: LocationRequest
 
 
-    var locationBroadcastReceiver: BroadcastReceiver = object :BroadcastReceiver(){
-        override fun onReceive(p0: Context?, intent: Intent?) {
-            var lat = intent?.getDoubleExtra("lat",0.0)
-            var lng = intent?.getDoubleExtra("lng",0.0)
-            onLocationUpdate(lat,lng)
-        }
-    }
+//    var locationBroadcastReceiver: BroadcastReceiver = object :BroadcastReceiver(){
+//        override fun onReceive(p0: Context?, intent: Intent?) {
+//            var lat = intent?.getDoubleExtra("lat",0.0)
+//            var lng = intent?.getDoubleExtra("lng",0.0)
+//            onLocationUpdate(lat,lng)
+//        }
+//    }
 
 
 
@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
             startService(intent)
         }
 
-        LocalBroadcastManager.getInstance(this)
-                .registerReceiver(locationBroadcastReceiver, IntentFilter(LocationService.LOCATION_RECEIVER))
+//        LocalBroadcastManager.getInstance(this)
+//                .registerReceiver(locationBroadcastReceiver, IntentFilter(LocationService.LOCATION_RECEIVER))
     }
 
     override fun onResume() {
@@ -61,9 +61,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        LocalBroadcastManager
-                .getInstance(this)
-                .unregisterReceiver(locationBroadcastReceiver)
+//        LocalBroadcastManager
+//                .getInstance(this)
+//                .unregisterReceiver(locationBroadcastReceiver)
     }
 
 

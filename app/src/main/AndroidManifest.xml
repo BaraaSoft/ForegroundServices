@@ -13,7 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <service android:name=".LocationService" />
+        <service android:name=".LocationService"/>
+
+        <receiver android:name=".LocationUpdateReceiver">
+            <intent-filter>
+                <action android:name="trackingapp.action.location.change"/>
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".MainActivity">
             <intent-filter>

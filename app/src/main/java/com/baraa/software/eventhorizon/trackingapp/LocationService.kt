@@ -23,7 +23,7 @@ class LocationService:Service() {
     companion object {
         const val ACTION_START = "LocationService.start"
         const val ACTION_STOP = "LocationService.stop"
-        const val LOCATION_RECEIVER = "com.trackingapp.locationReceiver"
+        const val LOCATION_RECEIVER = "trackingapp.action.location.change"
 
         const val LOCATION_NOTIFICATON_CHANNEL = "location_notification_channel"
     }
